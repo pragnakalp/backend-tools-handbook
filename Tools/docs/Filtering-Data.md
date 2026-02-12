@@ -363,7 +363,7 @@ WHERE rating IN ('G', 'PG', 'PG-13');
 - **FETCH** is the SQL-standard alternative to LIMIT
 - Always use **parentheses** when combining AND and OR to avoid confusion
 
-**Next Module**: [04-Joining-Tables.md](04-Joining-Tables.md) - Learn to combine data from multiple tables
+**Next Module**: [Joining-Tables.md](Joining-Tables.md) - Learn to combine data from multiple tables
 
 ---
 

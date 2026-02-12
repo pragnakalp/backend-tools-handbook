@@ -306,7 +306,7 @@ ORDER BY last_name;
 - Use **ORDER BY** only at the end of the entire set operation
 - Set operations are useful for combining, comparing, and finding differences between datasets
 
-**Next Module**: [07-Modifying-Data.md](07-Modifying-Data.md) - Learn to insert, update, and delete data
+**Next Module**: [Modifying-Data.md](Modifying-Data.md) - Learn to insert, update, and delete data
 
 ---
 

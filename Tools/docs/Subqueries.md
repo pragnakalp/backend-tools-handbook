@@ -318,7 +318,7 @@ WHERE length > (
 - **EXISTS** checks if subquery returns any rows (often more efficient than IN)
 - Subqueries help break complex problems into manageable parts
 
-**Next Module**: [09-Data-Types.md](09-Data-Types.md) - Learn about PostgreSQL data types
+**Next Module**: [Data-Types.md](Data-Types.md) - Learn about PostgreSQL data types
 
 ---
 

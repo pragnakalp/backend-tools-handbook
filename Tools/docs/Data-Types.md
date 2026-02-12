@@ -403,7 +403,7 @@ SELECT name, details ->> 'brand' AS brand FROM items;
 - **JSONB**: Store JSON in binary format (recommended, supports indexing)
 - **UUID**: Globally unique identifiers
 
-**Next Module**: [10-Managing-Tables.md](10-Managing-Tables.md) - Learn to create and manage tables
+**Next Module**: [Managing-Tables.md](Managing-Tables.md) - Learn to create and manage tables
 
 ---
 

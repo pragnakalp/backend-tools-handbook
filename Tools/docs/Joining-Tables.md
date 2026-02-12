@@ -346,7 +346,7 @@ WHERE p.payment_id IS NULL;
 - You can join **multiple tables** in a single query
 - Always use **WHERE** clauses to filter joined results when needed
 
-**Next Module**: [05-Grouping-Data.md](05-Grouping-Data.md) - Learn to group and aggregate data
+**Next Module**: [Grouping-Data.md](Grouping-Data.md) - Learn to group and aggregate data
 
 ---
 

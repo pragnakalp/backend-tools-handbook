@@ -393,7 +393,7 @@ WHERE release_year = 2006;
 - Use **transactions** for multiple ALTER operations
 - **Test changes** on copies before applying to production tables
 
-**Next Module**: [11-Constraints.md](11-Constraints.md) - Learn to enforce data integrity with constraints
+**Next Module**: [Constraints.md](Constraints.md) - Learn to enforce data integrity with constraints
 
 ---
 

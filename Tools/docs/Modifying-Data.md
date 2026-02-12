@@ -357,7 +357,7 @@ DO UPDATE SET
 - Use **transactions** for multiple related operations
 - **Backup** data before major changes
 
-**Next Module**: [08-Subqueries.md](08-Subqueries.md) - Learn to write nested queries
+**Next Module**: [Subqueries.md](Subqueries.md) - Learn to write nested queries
 
 ---
 

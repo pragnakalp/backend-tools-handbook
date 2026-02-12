@@ -689,4 +689,4 @@ For more information:
 
 ---
 
-**Ready to test your APIs?** Use these cURL commands as you work through each level of the [Flask Learning Guide](00_LEARNING_GUIDE.md)!
+**Ready to test your APIs?** Use these cURL commands as you work through each level of the [Flask Learning Guide](index.md)!

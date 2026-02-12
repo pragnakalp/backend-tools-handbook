@@ -256,7 +256,7 @@ ORDER BY title_length DESC;
 - **DISTINCT** removes duplicate rows from results
 - Expressions and functions (like `LENGTH()`) can be used in SELECT statements
 
-**Next Module**: [03-Filtering-Data.md](03-Filtering-Data.md) - Learn to filter data with WHERE, LIMIT, and pattern matching
+**Next Module**: [Filtering-Data.md](Filtering-Data.md) - Learn to filter data with WHERE, LIMIT, and pattern matching
 
 ---
 

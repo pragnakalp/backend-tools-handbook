@@ -329,7 +329,7 @@ SELECT * FROM actor LIMIT 3;
 - Use `\q` to quit psql
 - Basic commands like `\l`, `\dt`, `\d` help you navigate and explore your database
 
-**Next Module**: [02-Querying-Data.md](02-Querying-Data.md) - Learn to retrieve data with SELECT statements
+**Next Module**: [Querying-Data.md](Querying-Data.md) - Learn to retrieve data with SELECT statements
 
 ---
 

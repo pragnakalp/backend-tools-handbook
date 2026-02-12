@@ -246,7 +246,7 @@ ORDER BY avg_length DESC;
 - Combine GROUP BY with JOINs to get meaningful aggregated data
 - Use ORDER BY after GROUP BY to sort grouped results
 
-**Next Module**: [06-Set-Operations.md](06-Set-Operations.md) - Learn to combine multiple result sets
+**Next Module**: [Set-Operations.md](Set-Operations.md) - Learn to combine multiple result sets
 
 ---
 

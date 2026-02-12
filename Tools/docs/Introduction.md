@@ -181,7 +181,7 @@ Now that you understand what PostgreSQL is and have it installed, you're ready t
 2. **Load sample data** - Get practice data to work with
 3. **Start writing queries** - Begin retrieving and manipulating data
 
-**Next Module**: [01-Getting-Started.md](01-Getting-Started.md) - Set up your database and load sample data
+**Next Module**: [Getting-Started.md](Getting-Started.md) - Set up your database and load sample data
 
 ---
 
