@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-POSTMAN_GUIDE_PART1_BASICS" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Postman Beginner Guide - Part 1: Basics | backend-tools-handbook</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pragnakalp.github.io/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Postman Beginner Guide - Part 1: Basics | backend-tools-handbook"><meta data-rh="true" name="description" content="Goal"><meta data-rh="true" property="og:description" content="Goal"><link data-rh="true" rel="icon" href="/backend-tools-handbook/img/pk-color-128.png"><link data-rh="true" rel="canonical" href="https://pragnakalp.github.io/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS"><link data-rh="true" rel="alternate" href="https://pragnakalp.github.io/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS" hreflang="en"><link data-rh="true" rel="alternate" href="https://pragnakalp.github.io/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Basics","item":"https://pragnakalp.github.io/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS"}]}</script><link rel="stylesheet" href="/backend-tools-handbook/assets/css/styles.dd77c8c2.css">
+<script src="/backend-tools-handbook/assets/js/runtime~main.b26ca6eb.js" defer="defer"></script>
+<script src="/backend-tools-handbook/assets/js/main.4fe44245.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/backend-tools-handbook/img/pk-color-128.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><a class="navbar__brand" href="/backend-tools-handbook/"><div class="navbar__logo"><img src="/backend-tools-handbook/img/pk-color-128.png" alt="backend-tools-handbook Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/backend-tools-handbook/img/pk-color-128.png" alt="backend-tools-handbook Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Backend-tools-handbook</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/backend-tools-handbook/"><span title="Home" class="linkLabel_WmDU">Home</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/backend-tools-handbook/CURL_GUIDE"><span title="cURL" class="categoryLinkLabel_W154">cURL</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS"><span title="Postman" class="categoryLinkLabel_W154">Postman</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/backend-tools-handbook/POSTMAN_GUIDE_PART1_BASICS"><span title="Basics" class="linkLabel_WmDU">Basics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/backend-tools-handbook/POSTMAN_GUIDE_PART2_ADVANCED"><span title="Advanced" class="linkLabel_WmDU">Advanced</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/backend-tools-handbook/Git_Guide"><span title="Git" class="categoryLinkLabel_W154">Git</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/backend-tools-handbook/Introduction"><span title="SQL" class="categoryLinkLabel_W154">SQL</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/backend-tools-handbook/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Postman</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Basics</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Postman Beginner Guide - Part 1: Basics</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="goal">Goal<a href="#goal" class="hash-link" aria-label="Direct link to Goal" title="Direct link to Goal" translate="no">​</a></h2>
+<p>Learn how to use Postman to test, debug, and interact with REST APIs. This first part covers installation, interface navigation, basic requests, collections, and environments. By the end of Part 1, you&#x27;ll be able to efficiently test your Flask APIs and organize your requests.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="table-of-contents">Table of Contents<a href="#table-of-contents" class="hash-link" aria-label="Direct link to Table of Contents" title="Direct link to Table of Contents" translate="no">​</a></h2>
+<ol>
+<li class=""><a href="#what-is-postman" class="">What is Postman?</a></li>
+<li class=""><a href="#installation-and-setup" class="">Installation and Setup</a></li>
+<li class=""><a href="#understanding-the-postman-interface" class="">Understanding the Postman Interface</a></li>
+<li class=""><a href="#sending-your-first-request" class="">Sending Your First Request</a></li>
+<li class=""><a href="#http-methods-explained" class="">HTTP Methods Explained</a></li>
+<li class=""><a href="#working-with-request-headers" class="">Working with Request Headers</a></li>
+<li class=""><a href="#request-body-and-data-types" class="">Request Body and Data Types</a></li>
+<li class=""><a href="#organizing-requests-with-collections" class="">Organizing Requests with Collections</a></li>
+<li class=""><a href="#using-environments-and-variables" class="">Using Environments and Variables</a></li>
+<li class=""><a href="#next-steps" class="">Next Steps</a></li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-postman">What is Postman?<a href="#what-is-postman" class="hash-link" aria-label="Direct link to What is Postman?" title="Direct link to What is Postman?" translate="no">​</a></h2>
+<p>Postman is a powerful API development and testing tool that provides a user-friendly interface for making HTTP requests, testing APIs, and organizing your API workflows.</p>
+<p><strong>Why use Postman?</strong></p>
+<ul>
+<li class=""><strong>Visual Interface</strong>: Easy-to-use GUI instead of command-line tools</li>
+<li class=""><strong>Request Organization</strong>: Group related requests into collections</li>
+<li class=""><strong>Environment Management</strong>: Switch between dev, staging, and production easily</li>
+<li class=""><strong>Automated Testing</strong>: Write tests to validate API responses</li>
+<li class=""><strong>Team Collaboration</strong>: Share collections and work together</li>
+<li class=""><strong>Documentation</strong>: Auto-generate API documentation</li>
+<li class=""><strong>Mock Servers</strong>: Test frontend without backend ready</li>
+</ul>
+<p><strong>Postman vs cURL</strong></p>
+<table><thead><tr><th>Feature</th><th>Postman</th><th>cURL</th></tr></thead><tbody><tr><td>Interface</td><td>Graphical (GUI)</td><td>Command-line</td></tr><tr><td>Learning Curve</td><td>Easier for beginners</td><td>Requires terminal knowledge</td></tr><tr><td>Organization</td><td>Collections and folders</td><td>Scripts and files</td></tr><tr><td>Testing</td><td>Built-in test scripts</td><td>Manual validation</td></tr><tr><td>Collaboration</td><td>Built-in sharing</td><td>Manual file sharing</td></tr><tr><td>Automation</td><td>Collection Runner, Newman</td><td>Shell scripts</td></tr></tbody></table>
+<p><strong>When to use Postman:</strong></p>
+<ul>
+<li class="">Testing APIs during development</li>
+<li class="">Exploring and learning new APIs</li>
+<li class="">Sharing API requests with team</li>
+<li class="">Automated API testing</li>
+<li class="">API documentation</li>
+</ul>
+<p><strong>When to use cURL:</strong></p>
+<ul>
+<li class="">CI/CD pipelines</li>
+<li class="">Quick terminal testing</li>
+<li class="">Scripting and automation</li>
+<li class="">Server environments without GUI</li>
+</ul>
+<p>Both tools are valuable - use Postman for development and exploration, cURL for automation and scripts.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="installation-and-setup">Installation and Setup<a href="#installation-and-setup" class="hash-link" aria-label="Direct link to Installation and Setup" title="Direct link to Installation and Setup" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="windows-installation">Windows Installation<a href="#windows-installation" class="hash-link" aria-label="Direct link to Windows Installation" title="Direct link to Windows Installation" translate="no">​</a></h3>
+<p><strong>Method 1: Direct Download (Recommended)</strong></p>
+<ol>
+<li class="">Visit the <a href="https://www.postman.com/downloads/" target="_blank" rel="noopener noreferrer" class="">Postman Download Page</a></li>
+<li class="">Click the <strong>&quot;Download for Windows&quot;</strong> button</li>
+<li class="">Run the downloaded <code>.exe</code> installer</li>
+<li class="">Follow the installation wizard</li>
+<li class="">Launch Postman from the Start menu</li>
+</ol>
+<p><strong>Method 2: Using Chocolatey</strong></p>
+<p>If you have Chocolatey package manager installed:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">choco install postman</span><br></span></code></pre></div></div>
+<p><strong>Method 3: Using Winget</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">winget install Postman.Postman</span><br></span></code></pre></div></div>
+<p><strong>Verification:</strong></p>
+<p>After installation, open Postman. You should see the welcome screen.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="linux-installation">Linux Installation<a href="#linux-installation" class="hash-link" aria-label="Direct link to Linux Installation" title="Direct link to Linux Installation" translate="no">​</a></h3>
+<p><strong>Method 1: Using Snap (Recommended for Ubuntu/Debian)</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Install snapd if not already installed</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo apt update</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo apt install snapd</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Install Postman</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo snap install postman</span><br></span></code></pre></div></div>
+<p><strong>Method 2: Using Tarball (All Linux Distributions)</strong></p>
+<ol>
+<li class="">Download the Linux tarball from <a href="https://www.postman.com/downloads/" target="_blank" rel="noopener noreferrer" class="">Postman Download Page</a></li>
+<li class="">Extract the archive:</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Extract to a directory</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">tar -xzf Postman-linux-x64-*.tar.gz</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Move to /opt for system-wide access</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo mv Postman /opt/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Create a symbolic link for easy access</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo ln -s /opt/Postman/Postman /usr/local/bin/postman</span><br></span></code></pre></div></div>
+<ol>
+<li class="">Create a desktop entry (optional):</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Create desktop entry file</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cat &gt; ~/.local/share/applications/postman.desktop &lt;&lt; EOF</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Desktop Entry]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name=Postman</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Exec=/opt/Postman/Postman</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Icon=/opt/Postman/app/resources/app/assets/icon.png</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Terminal=false</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Type=Application</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Categories=Development;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">EOF</span><br></span></code></pre></div></div>
+<p><strong>Method 3: Using AppImage</strong></p>
+<ol>
+<li class="">Download the AppImage from the Postman website</li>
+<li class="">Make it executable:</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">chmod +x Postman-*.AppImage</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">./Postman-*.AppImage</span><br></span></code></pre></div></div>
+<p><strong>Verification:</strong></p>
+<p>Launch Postman from terminal:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">postman</span><br></span></code></pre></div></div>
+<p>Or from applications menu if desktop entry was created.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="creating-a-postman-account">Creating a Postman Account<a href="#creating-a-postman-account" class="hash-link" aria-label="Direct link to Creating a Postman Account" title="Direct link to Creating a Postman Account" translate="no">​</a></h3>
+<p><strong>Why create an account?</strong></p>
+<ul>
+<li class=""><strong>Sync Across Devices</strong>: Access your collections from any computer</li>
+<li class=""><strong>Team Collaboration</strong>: Share collections with teammates</li>
+<li class=""><strong>Cloud Backup</strong>: Your work is saved automatically</li>
+<li class=""><strong>Advanced Features</strong>: Access to team workspaces and integrations</li>
+</ul>
+<p><strong>Steps to Create Account:</strong></p>
+<ol>
+<li class="">Open Postman</li>
+<li class="">Click <strong>&quot;Sign Up&quot;</strong> or <strong>&quot;Create Account&quot;</strong></li>
+<li class="">Enter your email address</li>
+<li class="">Choose a password</li>
+<li class="">Verify your email (check inbox)</li>
+<li class="">Sign in to Postman</li>
+</ol>
+<p><strong>Note</strong>: You can use Postman without an account, but you&#x27;ll miss out on syncing and collaboration features.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="initial-setup-and-preferences">Initial Setup and Preferences<a href="#initial-setup-and-preferences" class="hash-link" aria-label="Direct link to Initial Setup and Preferences" title="Direct link to Initial Setup and Preferences" translate="no">​</a></h3>
+<p><strong>Accessing Settings:</strong></p>
+<ul>
+<li class=""><strong>Windows/Linux</strong>: Click the gear icon (⚙️) in the top-right corner</li>
+<li class="">Or go to: <strong>File → Settings</strong> (or <strong>Postman → Preferences</strong> on Linux)</li>
+</ul>
+<p><strong>Important Settings to Configure:</strong></p>
+<ol>
+<li class=""><strong>Theme</strong>: Choose Light or Dark theme (Settings → Theme)</li>
+<li class=""><strong>Editor Font Size</strong>: Adjust for readability (Settings → Editor)</li>
+<li class=""><strong>Request Timeout</strong>: Set default timeout (Settings → General)</li>
+<li class=""><strong>SSL Certificate Verification</strong>: Keep enabled for security (Settings → General)</li>
+<li class=""><strong>Send Cookies</strong>: Enable to maintain session (Settings → General)</li>
+</ol>
+<p><strong>Keyboard Shortcuts:</strong></p>
+<ul>
+<li class=""><strong>Ctrl+N</strong> (Windows/Linux): New request</li>
+<li class=""><strong>Ctrl+S</strong>: Save request</li>
+<li class=""><strong>Ctrl+Enter</strong>: Send request</li>
+<li class=""><strong>Ctrl+/</strong>: Toggle comment</li>
+<li class=""><strong>Ctrl+B</strong>: Toggle sidebar</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-the-postman-interface">Understanding the Postman Interface<a href="#understanding-the-postman-interface" class="hash-link" aria-label="Direct link to Understanding the Postman Interface" title="Direct link to Understanding the Postman Interface" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="main-components">Main Components<a href="#main-components" class="hash-link" aria-label="Direct link to Main Components" title="Direct link to Main Components" translate="no">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">┌─────────────────────────────────────────────────────────────┐</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  Postman                                 [⚙️] [☁️] [👤]     │  ← Top Bar</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├──────────┬──────────────────────────────────────────────────┤</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  GET  [URL Bar]                    [Send]       │  ← Request Builder</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ Sidebar  │  ┌──────────────────────────────────────────┐   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  │ Params │ Authorization │ Headers │ Body   │   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  └──────────────────────────────────────────┘   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │                                                  │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  ┌──────────────────────────────────────────┐   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  │ Response                                │   │  ← Response Viewer</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  │ Status: 200 OK                          │   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  │ Body │ Headers │ Cookies │ Test Results │   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│          │  └──────────────────────────────────────────┘   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└──────────┴──────────────────────────────────────────────────┘</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sidebar-components">Sidebar Components<a href="#sidebar-components" class="hash-link" aria-label="Direct link to Sidebar Components" title="Direct link to Sidebar Components" translate="no">​</a></h3>
+<p><strong>1. Collections</strong></p>
+<ul>
+<li class="">Organize related requests into folders</li>
+<li class="">Share collections with team</li>
+<li class="">Run multiple requests in sequence</li>
+</ul>
+<p><strong>2. APIs</strong></p>
+<ul>
+<li class="">Define API schemas</li>
+<li class="">Generate documentation</li>
+<li class="">Create mock servers</li>
+</ul>
+<p><strong>3. Environments</strong></p>
+<ul>
+<li class="">Store variables for different environments</li>
+<li class="">Switch between dev/staging/production</li>
+<li class="">Manage configuration values</li>
+</ul>
+<p><strong>4. History</strong></p>
+<ul>
+<li class="">View all requests you&#x27;ve sent</li>
+<li class="">Re-run previous requests</li>
+<li class="">Save requests to collections</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="request-builder">Request Builder<a href="#request-builder" class="hash-link" aria-label="Direct link to Request Builder" title="Direct link to Request Builder" translate="no">​</a></h3>
+<p><strong>1. HTTP Method Dropdown</strong></p>
+<ul>
+<li class="">Select GET, POST, PUT, PATCH, DELETE, etc.</li>
+<li class="">Custom methods also supported</li>
+</ul>
+<p><strong>2. URL Bar</strong></p>
+<ul>
+<li class="">Enter the API endpoint URL</li>
+<li class="">Supports variables: <code>{{base_url}}/api/tasks/</code></li>
+<li class="">Auto-complete for saved URLs</li>
+</ul>
+<p><strong>3. Tabs</strong></p>
+<ul>
+<li class=""><strong>Params</strong>: Query parameters (e.g., <code>?page=1&amp;limit=10</code>)</li>
+<li class=""><strong>Authorization</strong>: Authentication settings</li>
+<li class=""><strong>Headers</strong>: HTTP headers</li>
+<li class=""><strong>Body</strong>: Request body (for POST, PUT, PATCH)</li>
+<li class=""><strong>Pre-request Script</strong>: JavaScript code before request</li>
+<li class=""><strong>Tests</strong>: JavaScript code to test response</li>
+</ul>
+<p><strong>4. Send Button</strong></p>
+<ul>
+<li class="">Executes the request</li>
+<li class="">Shows response below</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="response-viewer">Response Viewer<a href="#response-viewer" class="hash-link" aria-label="Direct link to Response Viewer" title="Direct link to Response Viewer" translate="no">​</a></h3>
+<p><strong>1. Status Code</strong></p>
+<ul>
+<li class="">Shows HTTP status (200, 404, 500, etc.)</li>
+<li class="">Color-coded (green = success, red = error)</li>
+</ul>
+<p><strong>2. Response Time</strong></p>
+<ul>
+<li class="">How long the request took</li>
+<li class="">Useful for performance testing</li>
+</ul>
+<p><strong>3. Response Size</strong></p>
+<ul>
+<li class="">Size of the response body</li>
+<li class="">Helps identify large responses</li>
+</ul>
+<p><strong>4. Tabs</strong></p>
+<ul>
+<li class=""><strong>Body</strong>: Response content (JSON, XML, HTML, etc.)</li>
+<li class=""><strong>Headers</strong>: Response headers</li>
+<li class=""><strong>Cookies</strong>: Set cookies</li>
+<li class=""><strong>Test Results</strong>: Results of test scripts</li>
+</ul>
+<p><strong>5. Body View Options</strong></p>
+<ul>
+<li class=""><strong>Pretty</strong>: Formatted JSON/XML</li>
+<li class=""><strong>Raw</strong>: Unformatted text</li>
+<li class=""><strong>Preview</strong>: Rendered HTML</li>
+<li class=""><strong>Visualize</strong>: Custom visualization</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="console">Console<a href="#console" class="hash-link" aria-label="Direct link to Console" title="Direct link to Console" translate="no">​</a></h3>
+<p><strong>Access</strong>: Click <strong>&quot;Console&quot;</strong> button at bottom or press <strong>Ctrl+Alt+C</strong></p>
+<p><strong>What it shows:</strong></p>
+<ul>
+<li class="">All HTTP requests and responses</li>
+<li class="">Console.log() output from scripts</li>
+<li class="">Errors and warnings</li>
+<li class="">Network request details</li>
+</ul>
+<p><strong>Why it&#x27;s useful:</strong></p>
+<ul>
+<li class="">Debug request issues</li>
+<li class="">See exact headers sent</li>
+<li class="">View script execution logs</li>
+<li class="">Troubleshoot problems</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sending-your-first-request">Sending Your First Request<a href="#sending-your-first-request" class="hash-link" aria-label="Direct link to Sending Your First Request" title="Direct link to Sending Your First Request" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-by-step-your-first-get-request">Step-by-Step: Your First GET Request<a href="#step-by-step-your-first-get-request" class="hash-link" aria-label="Direct link to Step-by-Step: Your First GET Request" title="Direct link to Step-by-Step: Your First GET Request" translate="no">​</a></h3>
+<p>Let&#x27;s test a public API to get started:</p>
+<p><strong>1. Create a New Request</strong></p>
+<ul>
+<li class="">Click <strong>&quot;New&quot;</strong> button (top-left)</li>
+<li class="">Select <strong>&quot;HTTP Request&quot;</strong></li>
+<li class="">Or press <strong>Ctrl+N</strong></li>
+</ul>
+<p><strong>2. Set the Request</strong></p>
+<ul>
+<li class=""><strong>Method</strong>: Select <strong>GET</strong> (default)</li>
+<li class=""><strong>URL</strong>: Enter <code>https://jsonplaceholder.typicode.com/posts/1</code></li>
+<li class="">Click <strong>&quot;Send&quot;</strong></li>
+</ul>
+<p><strong>3. View the Response</strong></p>
+<p>You should see:</p>
+<ul>
+<li class=""><strong>Status</strong>: <code>200 OK</code></li>
+<li class=""><strong>Body</strong>: JSON data with post information</li>
+<li class=""><strong>Time</strong>: Response time in milliseconds</li>
+</ul>
+<p><strong>Congratulations!</strong> You&#x27;ve sent your first API request.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="testing-your-local-flask-api">Testing Your Local Flask API<a href="#testing-your-local-flask-api" class="hash-link" aria-label="Direct link to Testing Your Local Flask API" title="Direct link to Testing Your Local Flask API" translate="no">​</a></h3>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li class="">Flask server running on <code>http://127.0.0.1:5000</code></li>
+<li class="">An API endpoint (e.g., <code>/api/tasks/</code>)</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li class="">
+<p><strong>Create New Request</strong></p>
+<ul>
+<li class="">Click <strong>&quot;New&quot;</strong> → <strong>&quot;HTTP Request&quot;</strong></li>
+</ul>
+</li>
+<li class="">
+<p><strong>Configure Request</strong></p>
+<ul>
+<li class=""><strong>Method</strong>: GET</li>
+<li class=""><strong>URL</strong>: <code>http://127.0.0.1:5000/api/tasks/</code></li>
+<li class="">Click <strong>&quot;Send&quot;</strong></li>
+</ul>
+</li>
+<li class="">
+<p><strong>View Response</strong></p>
+<ul>
+<li class="">If server is running: You&#x27;ll see your API data</li>
+<li class="">If server is not running: Connection error</li>
+</ul>
+</li>
+</ol>
+<p><strong>Common First Request Issues:</strong></p>
+<table><thead><tr><th>Issue</th><th>Solution</th></tr></thead><tbody><tr><td>&quot;Could not get response&quot;</td><td>Check if Flask server is running (<code>python app.py</code> or <code>flask run</code>)</td></tr><tr><td>&quot;Connection refused&quot;</td><td>Verify URL and port (usually 5000 for Flask)</td></tr><tr><td>&quot;404 Not Found&quot;</td><td>Check URL path matches your Flask routes and blueprints</td></tr><tr><td>&quot;CORS error&quot;</td><td>Add CORS headers using <code>flask-cors</code> in your Flask app</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="http-methods-explained">HTTP Methods Explained<a href="#http-methods-explained" class="hash-link" aria-label="Direct link to HTTP Methods Explained" title="Direct link to HTTP Methods Explained" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="get---retrieve-data">GET - Retrieve Data<a href="#get---retrieve-data" class="hash-link" aria-label="Direct link to GET - Retrieve Data" title="Direct link to GET - Retrieve Data" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Fetch data from the server</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li class="">List all items: <code>GET /api/tasks/</code></li>
+<li class="">Get single item: <code>GET /api/tasks/1/</code></li>
+<li class="">Search/filter: <code>GET /api/tasks/?completed=true</code></li>
+</ul>
+<p><strong>Example in Postman:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: GET</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/</span><br></span></code></pre></div></div>
+<p><strong>No body required</strong> - data comes in URL or query parameters.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="post---create-new-resource">POST - Create New Resource<a href="#post---create-new-resource" class="hash-link" aria-label="Direct link to POST - Create New Resource" title="Direct link to POST - Create New Resource" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Create a new item on the server</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li class="">Create new task: <code>POST /api/tasks/</code></li>
+<li class="">Register user: <code>POST /api/register/</code></li>
+<li class="">Submit form data</li>
+</ul>
+<p><strong>Example in Postman:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: POST</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (raw JSON):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;title&quot;: &quot;Learn Postman&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;description&quot;: &quot;Complete the Postman guide&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;completed&quot;: false</span><br></span></code></pre></div></div>
+<p><strong>Important</strong>: Set <strong>Content-Type</strong> header to <code>application/json</code></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="put---full-update">PUT - Full Update<a href="#put---full-update" class="hash-link" aria-label="Direct link to PUT - Full Update" title="Direct link to PUT - Full Update" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Replace entire resource with new data</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li class="">Update all fields of an item</li>
+<li class="">Replace existing resource completely</li>
+</ul>
+<p><strong>Example in Postman:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: PUT</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/1/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (raw JSON):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;title&quot;: &quot;Updated Task&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;description&quot;: &quot;Updated description&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;completed&quot;: true</span><br></span></code></pre></div></div>
+<p><strong>Note</strong>: PUT requires ALL fields, even if unchanged.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="patch---partial-update">PATCH - Partial Update<a href="#patch---partial-update" class="hash-link" aria-label="Direct link to PATCH - Partial Update" title="Direct link to PATCH - Partial Update" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Update only specific fields</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li class="">Update single field: <code>PATCH /api/tasks/1/</code> with <code>{&quot;completed&quot;: true}</code></li>
+<li class="">Update multiple fields without sending all data</li>
+</ul>
+<p><strong>Example in Postman:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: PATCH</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/1/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (raw JSON):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;completed&quot;: true</span><br></span></code></pre></div></div>
+<p><strong>Note</strong>: PATCH only updates provided fields.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="delete---remove-resource">DELETE - Remove Resource<a href="#delete---remove-resource" class="hash-link" aria-label="Direct link to DELETE - Remove Resource" title="Direct link to DELETE - Remove Resource" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Delete an item from the server</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li class="">Delete task: <code>DELETE /api/tasks/1/</code></li>
+<li class="">Remove user account</li>
+<li class="">Delete any resource</li>
+</ul>
+<p><strong>Example in Postman:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: DELETE</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/1/</span><br></span></code></pre></div></div>
+<p><strong>No body required</strong> - item ID is in URL.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary-table">Summary Table<a href="#summary-table" class="hash-link" aria-label="Direct link to Summary Table" title="Direct link to Summary Table" translate="no">​</a></h3>
+<table><thead><tr><th>Method</th><th>Purpose</th><th>Body Required?</th><th>Idempotent?</th></tr></thead><tbody><tr><td>GET</td><td>Read data</td><td>No</td><td>Yes</td></tr><tr><td>POST</td><td>Create new</td><td>Yes</td><td>No</td></tr><tr><td>PUT</td><td>Full update</td><td>Yes</td><td>Yes</td></tr><tr><td>PATCH</td><td>Partial update</td><td>Yes</td><td>No</td></tr><tr><td>DELETE</td><td>Delete</td><td>No</td><td>Yes</td></tr></tbody></table>
+<p><strong>Idempotent</strong> = Can be called multiple times with same result.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="working-with-request-headers">Working with Request Headers<a href="#working-with-request-headers" class="hash-link" aria-label="Direct link to Working with Request Headers" title="Direct link to Working with Request Headers" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-are-headers">What are Headers?<a href="#what-are-headers" class="hash-link" aria-label="Direct link to What are Headers?" title="Direct link to What are Headers?" translate="no">​</a></h3>
+<p>Headers are metadata sent with HTTP requests that provide additional information about the request or response.</p>
+<p><strong>Common Headers:</strong></p>
+<ul>
+<li class=""><strong>Content-Type</strong>: Type of data being sent (JSON, form-data, etc.)</li>
+<li class=""><strong>Authorization</strong>: Authentication credentials</li>
+<li class=""><strong>Accept</strong>: What response format you want</li>
+<li class=""><strong>User-Agent</strong>: Information about the client</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="adding-headers-in-postman">Adding Headers in Postman<a href="#adding-headers-in-postman" class="hash-link" aria-label="Direct link to Adding Headers in Postman" title="Direct link to Adding Headers in Postman" translate="no">​</a></h3>
+<p><strong>Method 1: Headers Tab</strong></p>
+<ol>
+<li class="">Click <strong>&quot;Headers&quot;</strong> tab in request builder</li>
+<li class="">Click <strong>&quot;Add Header&quot;</strong> or use key-value fields</li>
+<li class="">Enter header name (e.g., <code>Content-Type</code>)</li>
+<li class="">Enter header value (e.g., <code>application/json</code>)</li>
+<li class="">Postman auto-completes common headers</li>
+</ol>
+<p><strong>Method 2: Bulk Edit</strong></p>
+<ol>
+<li class="">Click <strong>&quot;Bulk Edit&quot;</strong> in Headers tab</li>
+<li class="">Paste headers in format:</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Content-Type: application/json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Accept: application/json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Authorization: Bearer token123</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="common-headers-for-apis">Common Headers for APIs<a href="#common-headers-for-apis" class="hash-link" aria-label="Direct link to Common Headers for APIs" title="Direct link to Common Headers for APIs" translate="no">​</a></h3>
+<p><strong>Content-Type</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Content-Type: application/json</span><br></span></code></pre></div></div>
+<p><strong>Why</strong>: Tells server you&#x27;re sending JSON data. Required for POST/PUT/PATCH with JSON body.</p>
+<p><strong>Accept</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Accept: application/json</span><br></span></code></pre></div></div>
+<p><strong>Why</strong>: Tells server you want JSON response. Your Flask API should be configured to return JSON by default, but it&#x27;s still good practice to specify.</p>
+<p><strong>Authorization (Bearer Token)</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc...</span><br></span></code></pre></div></div>
+<p><strong>Why</strong>: Authenticates requests. Used with JWT or token authentication.</p>
+<p><strong>Authorization (Basic Auth)</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</span><br></span></code></pre></div></div>
+<p><strong>Why</strong>: Basic username/password authentication (base64 encoded).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="preset-headers">Preset Headers<a href="#preset-headers" class="hash-link" aria-label="Direct link to Preset Headers" title="Direct link to Preset Headers" translate="no">​</a></h3>
+<p>Postman provides preset headers for common scenarios:</p>
+<ol>
+<li class="">Click <strong>&quot;Presets&quot;</strong> dropdown in Headers tab</li>
+<li class="">Select from:<!-- -->
+<ul>
+<li class=""><strong>JSON</strong>: Sets <code>Content-Type: application/json</code></li>
+<li class=""><strong>XML</strong>: Sets <code>Content-Type: application/xml</code></li>
+<li class=""><strong>Form URL Encoded</strong>: Sets appropriate content type</li>
+<li class=""><strong>Multipart Form</strong>: For file uploads</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="managing-headers">Managing Headers<a href="#managing-headers" class="hash-link" aria-label="Direct link to Managing Headers" title="Direct link to Managing Headers" translate="no">​</a></h3>
+<p><strong>Disable Header Temporarily:</strong></p>
+<ul>
+<li class="">Uncheck the checkbox next to header</li>
+<li class="">Header stays but won&#x27;t be sent</li>
+</ul>
+<p><strong>Delete Header:</strong></p>
+<ul>
+<li class="">Hover over header row</li>
+<li class="">Click <strong>&quot;X&quot;</strong> icon</li>
+</ul>
+<p><strong>Duplicate Header:</strong></p>
+<ul>
+<li class="">Right-click header</li>
+<li class="">Select <strong>&quot;Duplicate&quot;</strong></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="request-body-and-data-types">Request Body and Data Types<a href="#request-body-and-data-types" class="hash-link" aria-label="Direct link to Request Body and Data Types" title="Direct link to Request Body and Data Types" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-to-use-request-body">When to Use Request Body<a href="#when-to-use-request-body" class="hash-link" aria-label="Direct link to When to Use Request Body" title="Direct link to When to Use Request Body" translate="no">​</a></h3>
+<p>Request body is used with:</p>
+<ul>
+<li class=""><strong>POST</strong>: Creating new resources</li>
+<li class=""><strong>PUT</strong>: Full updates</li>
+<li class=""><strong>PATCH</strong>: Partial updates</li>
+</ul>
+<p><strong>GET and DELETE</strong> don&#x27;t use request body - data goes in URL or headers.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="body-types-in-postman">Body Types in Postman<a href="#body-types-in-postman" class="hash-link" aria-label="Direct link to Body Types in Postman" title="Direct link to Body Types in Postman" translate="no">​</a></h3>
+<p>Postman supports multiple body formats:</p>
+<p><strong>1. none</strong></p>
+<ul>
+<li class="">No body (for GET, DELETE requests)</li>
+<li class="">Default for GET requests</li>
+</ul>
+<p><strong>2. form-data</strong></p>
+<ul>
+<li class="">HTML form submission</li>
+<li class="">Key-value pairs</li>
+<li class="">Supports file uploads</li>
+</ul>
+<p><strong>3. x-www-form-urlencoded</strong></p>
+<ul>
+<li class="">URL-encoded form data</li>
+<li class="">Similar to form-data but encoded differently</li>
+<li class="">No file upload support</li>
+</ul>
+<p><strong>4. raw</strong></p>
+<ul>
+<li class="">Send raw data (JSON, XML, text, etc.)</li>
+<li class="">Most common for REST APIs</li>
+<li class="">Choose format from dropdown (JSON, XML, HTML, Text)</li>
+</ul>
+<p><strong>5. binary</strong></p>
+<ul>
+<li class="">Upload binary files (images, PDFs, etc.)</li>
+<li class="">Select file from computer</li>
+</ul>
+<p><strong>6. GraphQL</strong></p>
+<ul>
+<li class="">For GraphQL queries and mutations</li>
+<li class="">Advanced feature</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="json-body-most-common">JSON Body (Most Common)<a href="#json-body-most-common" class="hash-link" aria-label="Direct link to JSON Body (Most Common)" title="Direct link to JSON Body (Most Common)" translate="no">​</a></h3>
+<p><strong>When to use</strong>: Most Flask APIs use JSON</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li class="">Select <strong>&quot;Body&quot;</strong> tab</li>
+<li class="">Choose <strong>&quot;raw&quot;</strong></li>
+<li class="">Select <strong>&quot;JSON&quot;</strong> from dropdown (or &quot;Text&quot; and type JSON)</li>
+<li class="">Enter JSON data:</li>
+</ol>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;title&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;My Task&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;description&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Task description&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;completed&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><br></span></code></pre></div></div>
+<p><strong>Example: Creating a Task</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: POST</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Headers:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Content-Type: application/json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (raw JSON):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;title&quot;: &quot;Learn Postman&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;description&quot;: &quot;Complete Postman guide&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;completed&quot;: false</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="form-data">Form Data<a href="#form-data" class="hash-link" aria-label="Direct link to Form Data" title="Direct link to Form Data" translate="no">​</a></h3>
+<p><strong>When to use</strong>: HTML forms, file uploads</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li class="">Select <strong>&quot;Body&quot;</strong> tab</li>
+<li class="">Choose <strong>&quot;form-data&quot;</strong></li>
+<li class="">Add key-value pairs:<!-- -->
+<ul>
+<li class=""><strong>Key</strong>: <code>title</code></li>
+<li class=""><strong>Value</strong>: <code>My Task</code></li>
+</ul>
+</li>
+<li class="">For files, change type to <strong>&quot;File&quot;</strong> and select file</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: POST</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (form-data):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  title: &quot;My Task&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  description: &quot;Task description&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  file: [Select File]</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="url-encoded-form">URL-Encoded Form<a href="#url-encoded-form" class="hash-link" aria-label="Direct link to URL-Encoded Form" title="Direct link to URL-Encoded Form" translate="no">​</a></h3>
+<p><strong>When to use</strong>: Traditional form submissions</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li class="">Select <strong>&quot;Body&quot;</strong> tab</li>
+<li class="">Choose <strong>&quot;x-www-form-urlencoded&quot;</strong></li>
+<li class="">Add key-value pairs</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: POST</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (x-www-form-urlencoded):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  title: My Task</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  description: Task description</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="binary-body">Binary Body<a href="#binary-body" class="hash-link" aria-label="Direct link to Binary Body" title="Direct link to Binary Body" translate="no">​</a></h3>
+<p><strong>When to use</strong>: Uploading files directly</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li class="">Select <strong>&quot;Body&quot;</strong> tab</li>
+<li class="">Choose <strong>&quot;binary&quot;</strong></li>
+<li class="">Click <strong>&quot;Select File&quot;</strong></li>
+<li class="">Choose file from computer</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Method: POST</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">URL: http://127.0.0.1:5000/api/tasks/1/upload/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Body (binary):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  [Select PDF file]</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="json-formatting-tips">JSON Formatting Tips<a href="#json-formatting-tips" class="hash-link" aria-label="Direct link to JSON Formatting Tips" title="Direct link to JSON Formatting Tips" translate="no">​</a></h3>
+<p><strong>Valid JSON:</strong></p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;title&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Task&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;completed&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;tags&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;work&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;urgent&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre></div></div>
+<p><strong>Invalid JSON (Common Mistakes):</strong></p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// ❌ Trailing comma</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;title&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Task&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;completed&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// ← Remove this comma</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// ❌ Single quotes (use double quotes)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &#x27;title&#x27;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> &#x27;Task&#x27;  </span><span class="token comment" style="color:#999988;font-style:italic">// ❌ Wrong</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// ❌ Missing quotes around keys</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  title</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Task&quot;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// ❌ Wrong</span><br></span></code></pre></div></div>
+<p><strong>Postman Auto-Formatting:</strong></p>
+<ul>
+<li class="">Postman validates JSON as you type</li>
+<li class="">Red underline = syntax error</li>
+<li class="">Click <strong>&quot;Beautify&quot;</strong> to format JSON nicely</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="organizing-requests-with-collections">Organizing Requests with Collections<a href="#organizing-requests-with-collections" class="hash-link" aria-label="Direct link to Organizing Requests with Collections" title="Direct link to Organizing Requests with Collections" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-are-collections">What are Collections?<a href="#what-are-collections" class="hash-link" aria-label="Direct link to What are Collections?" title="Direct link to What are Collections?" translate="no">​</a></h3>
+<p>Collections are groups of related API requests. Think of them as folders for organizing your API testing.</p>
+<p><strong>Why use Collections?</strong></p>
+<ul>
+<li class=""><strong>Organization</strong>: Group related requests together</li>
+<li class=""><strong>Sharing</strong>: Share entire collection with team</li>
+<li class=""><strong>Automation</strong>: Run all requests in sequence</li>
+<li class=""><strong>Documentation</strong>: Auto-generate API docs</li>
+<li class=""><strong>Version Control</strong>: Export/import collections</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="creating-a-collection">Creating a Collection<a href="#creating-a-collection" class="hash-link" aria-label="Direct link to Creating a Collection" title="Direct link to Creating a Collection" translate="no">​</a></h3>
+<p><strong>Method 1: New Collection Button</strong></p>
+<ol>
+<li class="">Click <strong>&quot;New&quot;</strong> button (top-left)</li>
+<li class="">Select <strong>&quot;Collection&quot;</strong></li>
+<li class="">Enter collection name (e.g., &quot;Flask Task API&quot;)</li>
+<li class="">(Optional) Add description</li>
+<li class="">Click <strong>&quot;Create&quot;</strong></li>
+</ol>
+<p><strong>Method 2: From Request</strong></p>
+<ol>
+<li class="">Create or open a request</li>
+<li class="">Click <strong>&quot;Save&quot;</strong> button</li>
+<li class="">Click <strong>&quot;+ Create Collection&quot;</strong></li>
+<li class="">Enter name and create</li>
+<li class="">Save request to new collection</li>
+</ol>
+<p><strong>Method 3: Sidebar</strong></p>
+<ol>
+<li class="">Right-click in sidebar</li>
+<li class="">Select <strong>&quot;New Collection&quot;</strong></li>
+<li class="">Enter name and create</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="adding-requests-to-collection">Adding Requests to Collection<a href="#adding-requests-to-collection" class="hash-link" aria-label="Direct link to Adding Requests to Collection" title="Direct link to Adding Requests to Collection" translate="no">​</a></h3>
+<p><strong>Method 1: Save Existing Request</strong></p>
+<ol>
+<li class="">Create or modify a request</li>
+<li class="">Click <strong>&quot;Save&quot;</strong> button</li>
+<li class="">Select collection from dropdown</li>
+<li class="">(Optional) Change request name</li>
+<li class="">Click <strong>&quot;Save&quot;</strong></li>
+</ol>
+<p><strong>Method 2: Drag and Drop</strong></p>
+<ol>
+<li class="">Find request in <strong>History</strong></li>
+<li class="">Drag it to collection in sidebar</li>
+<li class="">Drop to add</li>
+</ol>
+<p><strong>Method 3: Create in Collection</strong></p>
+<ol>
+<li class="">Right-click collection</li>
+<li class="">Select <strong>&quot;Add Request&quot;</strong></li>
+<li class="">Configure request</li>
+<li class="">It&#x27;s automatically saved to collection</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="organizing-with-folders">Organizing with Folders<a href="#organizing-with-folders" class="hash-link" aria-label="Direct link to Organizing with Folders" title="Direct link to Organizing with Folders" translate="no">​</a></h3>
+<p><strong>Create Folder:</strong></p>
+<ol>
+<li class="">Right-click collection</li>
+<li class="">Select <strong>&quot;Add Folder&quot;</strong></li>
+<li class="">Enter folder name (e.g., &quot;Authentication&quot;, &quot;Tasks&quot;, &quot;Users&quot;)</li>
+</ol>
+<p><strong>Organize Requests:</strong></p>
+<ul>
+<li class="">Drag requests into folders</li>
+<li class="">Create nested folders for better organization</li>
+</ul>
+<p><strong>Example Structure:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Flask API Collection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── Authentication</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Login</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Register</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── Refresh Token</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── Tasks</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── List Tasks</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Create Task</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Get Task</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Update Task</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── Delete Task</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└── Users</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ├── List Users</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    └── Get Profile</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="collection-settings">Collection Settings<a href="#collection-settings" class="hash-link" aria-label="Direct link to Collection Settings" title="Direct link to Collection Settings" translate="no">​</a></h3>
+<p><strong>Access</strong>: Right-click collection → <strong>&quot;Edit&quot;</strong></p>
+<p><strong>Settings:</strong></p>
+<ol>
+<li class=""><strong>Name</strong>: Collection name</li>
+<li class=""><strong>Description</strong>: What this collection is for</li>
+<li class=""><strong>Authorization</strong>: Set auth for all requests (can override per request)</li>
+<li class=""><strong>Pre-request Script</strong>: Run before each request</li>
+<li class=""><strong>Tests</strong>: Run after each request</li>
+<li class=""><strong>Variables</strong>: Collection-level variables</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="collection-variables">Collection Variables<a href="#collection-variables" class="hash-link" aria-label="Direct link to Collection Variables" title="Direct link to Collection Variables" translate="no">​</a></h3>
+<p><strong>Why</strong>: Store values used across multiple requests in the collection.</p>
+<p><strong>Example</strong>: Base URL for all requests</p>
+<p><strong>Set Collection Variable:</strong></p>
+<ol>
+<li class="">Right-click collection → <strong>&quot;Edit&quot;</strong></li>
+<li class="">Go to <strong>&quot;Variables&quot;</strong> tab</li>
+<li class="">Add variable:<!-- -->
+<ul>
+<li class=""><strong>Variable</strong>: <code>base_url</code></li>
+<li class=""><strong>Initial Value</strong>: <code>http://127.0.0.1:5000</code></li>
+<li class=""><strong>Current Value</strong>: <code>http://127.0.0.1:5000</code></li>
+</ul>
+</li>
+<li class="">Click <strong>&quot;Save&quot;</strong></li>
+</ol>
+<p><strong>Use in Requests:</strong></p>
+<p>In URL bar, use: <code>{{base_url}}/api/tasks/</code></p>
+<p>Postman replaces <code>{{base_url}}</code> with the actual value.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="running-collections">Running Collections<a href="#running-collections" class="hash-link" aria-label="Direct link to Running Collections" title="Direct link to Running Collections" translate="no">​</a></h3>
+<p><strong>Collection Runner:</strong></p>
+<ol>
+<li class="">Right-click collection</li>
+<li class="">Select <strong>&quot;Run collection&quot;</strong></li>
+<li class="">Configure run settings:<!-- -->
+<ul>
+<li class="">Select requests to run</li>
+<li class="">Set iterations (how many times)</li>
+<li class="">Set delay between requests</li>
+</ul>
+</li>
+<li class="">Click <strong>&quot;Run Flask API Collection&quot;</strong></li>
+<li class="">View results</li>
+</ol>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li class="">Test all endpoints after code changes</li>
+<li class="">Verify API still works</li>
+<li class="">Run automated tests</li>
+<li class="">Performance testing</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sharing-collections">Sharing Collections<a href="#sharing-collections" class="hash-link" aria-label="Direct link to Sharing Collections" title="Direct link to Sharing Collections" translate="no">​</a></h3>
+<p><strong>Export Collection:</strong></p>
+<ol>
+<li class="">Right-click collection</li>
+<li class="">Select <strong>&quot;Export&quot;</strong></li>
+<li class="">Choose format (Collection v2.1 recommended)</li>
+<li class="">Save file</li>
+<li class="">Share file with team</li>
+</ol>
+<p><strong>Import Collection:</strong></p>
+<ol>
+<li class="">Click <strong>&quot;Import&quot;</strong> button (top-left)</li>
+<li class="">Select <strong>&quot;File&quot;</strong> or <strong>&quot;Link&quot;</strong></li>
+<li class="">Choose collection file or paste link</li>
+<li class="">Click <strong>&quot;Import&quot;</strong></li>
+</ol>
+<p><strong>Share via Link (Postman Account Required):</strong></p>
+<ol>
+<li class="">Right-click collection</li>
+<li class="">Select <strong>&quot;Share Collection&quot;</strong></li>
+<li class="">Choose visibility (Team, Public, Private)</li>
+<li class="">Copy link and share</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="using-environments-and-variables">Using Environments and Variables<a href="#using-environments-and-variables" class="hash-link" aria-label="Direct link to Using Environments and Variables" title="Direct link to Using Environments and Variables" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-are-environments">What are Environments?<a href="#what-are-environments" class="hash-link" aria-label="Direct link to What are Environments?" title="Direct link to What are Environments?" translate="no">​</a></h3>
+<p>Environments are sets of variables that you can switch between easily. Common use cases:</p>
+<ul>
+<li class=""><strong>Development</strong>: <code>http://127.0.0.1:5000</code></li>
+<li class=""><strong>Staging</strong>: <code>https://staging-api.example.com</code></li>
+<li class=""><strong>Production</strong>: <code>https://api.example.com</code></li>
+</ul>
+<p><strong>Why use Environments?</strong></p>
+<ul>
+<li class=""><strong>Quick Switching</strong>: Change base URL with one click</li>
+<li class=""><strong>No Manual Editing</strong>: Don&#x27;t change URLs in every request</li>
+<li class=""><strong>Team Consistency</strong>: Everyone uses same environment values</li>
+<li class=""><strong>Security</strong>: Store sensitive data (API keys) securely</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="creating-an-environment">Creating an Environment<a href="#creating-an-environment" class="hash-link" aria-label="Direct link to Creating an Environment" title="Direct link to Creating an Environment" translate="no">​</a></h3>
+<p><strong>Steps:</strong></p>
+<ol>
+<li class="">Click <strong>&quot;Environments&quot;</strong> in sidebar (or eye icon in top-right)</li>
+<li class="">Click <strong>&quot;+&quot;</strong> button or <strong>&quot;Create Environment&quot;</strong></li>
+<li class="">Enter environment name (e.g., &quot;Development&quot;)</li>
+<li class="">Add variables:<!-- -->
+<ul>
+<li class=""><strong>Variable</strong>: <code>base_url</code></li>
+<li class=""><strong>Initial Value</strong>: <code>http://127.0.0.1:5000</code></li>
+<li class=""><strong>Current Value</strong>: <code>http://127.0.0.1:5000</code></li>
+</ul>
+</li>
+<li class="">Click <strong>&quot;Save&quot;</strong></li>
+</ol>
+<p><strong>Example Environment Variables:</strong></p>
+<table><thead><tr><th>Variable</th><th>Initial Value</th><th>Current Value</th></tr></thead><tbody><tr><td><code>base_url</code></td><td><code>http://127.0.0.1:5000</code></td><td><code>http://127.0.0.1:5000</code></td></tr><tr><td><code>api_key</code></td><td><code>dev_key_123</code></td><td><code>dev_key_123</code></td></tr><tr><td><code>token</code></td><td>(leave empty)</td><td>(will be set dynamically)</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="switching-environments">Switching Environments<a href="#switching-environments" class="hash-link" aria-label="Direct link to Switching Environments" title="Direct link to Switching Environments" translate="no">​</a></h3>
+<p><strong>Method 1: Dropdown</strong></p>
+<ol>
+<li class="">Click environment dropdown (top-right, shows &quot;No Environment&quot;)</li>
+<li class="">Select environment (e.g., &quot;Development&quot;)</li>
+<li class="">All <code>{{variable}}</code> references update automatically</li>
+</ol>
+<p><strong>Method 2: Quick Switch</strong></p>
+<ul>
+<li class="">Use keyboard shortcut (if configured)</li>
+<li class="">Or click environment name in top-right</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="using-variables-in-requests">Using Variables in Requests<a href="#using-variables-in-requests" class="hash-link" aria-label="Direct link to Using Variables in Requests" title="Direct link to Using Variables in Requests" translate="no">​</a></h3>
+<p><strong>Syntax</strong>: <code>{{variable_name}}</code></p>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">URL: {{base_url}}/api/tasks/</span><br></span></code></pre></div></div>
+<p>When &quot;Development&quot; environment is selected and <code>base_url = http://127.0.0.1:5000</code>, the actual URL becomes:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">http://127.0.0.1:5000/api/tasks/</span><br></span></code></pre></div></div>
+<p><strong>Where Variables Work:</strong></p>
+<ul>
+<li class=""><strong>URL</strong>: <code>{{base_url}}/api/tasks/</code></li>
+<li class=""><strong>Headers</strong>: <code>Authorization: Bearer {{token}}</code></li>
+<li class=""><strong>Body</strong>: <code>{&quot;user_id&quot;: {{user_id}}}</code></li>
+<li class=""><strong>Query Params</strong>: <code>?page={{page_number}}</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="variable-scopes">Variable Scopes<a href="#variable-scopes" class="hash-link" aria-label="Direct link to Variable Scopes" title="Direct link to Variable Scopes" translate="no">​</a></h3>
+<p>Variables have different scopes (priority order):</p>
+<ol>
+<li class="">
+<p><strong>Local Variables</strong> (highest priority)</p>
+<ul>
+<li class="">Set in scripts</li>
+<li class="">Only available in current request</li>
+<li class="">Example: <code>pm.variables.set(&quot;temp_id&quot;, &quot;123&quot;)</code></li>
+</ul>
+</li>
+<li class="">
+<p><strong>Environment Variables</strong></p>
+<ul>
+<li class="">Defined in environment</li>
+<li class="">Available to all requests when environment is active</li>
+<li class="">Example: <code>{{base_url}}</code></li>
+</ul>
+</li>
+<li class="">
+<p><strong>Collection Variables</strong></p>
+<ul>
+<li class="">Defined in collection settings</li>
+<li class="">Available to all requests in collection</li>
+<li class="">Example: <code>{{api_version}}</code></li>
+</ul>
+</li>
+<li class="">
+<p><strong>Global Variables</strong> (lowest priority)</p>
+<ul>
+<li class="">Available everywhere</li>
+<li class="">Use sparingly</li>
+<li class="">Example: <code>{{global_timeout}}</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>Resolution Order</strong>: Local → Environment → Collection → Global</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dynamic-variables">Dynamic Variables<a href="#dynamic-variables" class="hash-link" aria-label="Direct link to Dynamic Variables" title="Direct link to Dynamic Variables" translate="no">​</a></h3>
+<p>Postman provides built-in dynamic variables:</p>
+<p><strong>Random Values:</strong></p>
+<ul>
+<li class=""><code>{{$randomInt}}</code>: Random integer (0-1000)</li>
+<li class=""><code>{{$randomFirstName}}</code>: Random first name</li>
+<li class=""><code>{{$randomLastName}}</code>: Random last name</li>
+<li class=""><code>{{$randomEmail}}</code>: Random email</li>
+<li class=""><code>{{$randomUUID}}</code>: Random UUID</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;name&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;{{$randomFirstName}} {{$randomLastName}}&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;email&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;{{$randomEmail}}&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;age&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">$randomInt</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<p><strong>Timestamp:</strong></p>
+<ul>
+<li class=""><code>{{$timestamp}}</code>: Current Unix timestamp</li>
+<li class=""><code>{{$isoTimestamp}}</code>: ISO 8601 timestamp</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;created_at&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;{{$isoTimestamp}}&quot;</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="setting-variables-from-response">Setting Variables from Response<a href="#setting-variables-from-response" class="hash-link" aria-label="Direct link to Setting Variables from Response" title="Direct link to Setting Variables from Response" translate="no">​</a></h3>
+<p><strong>Why</strong>: Extract data from response and use in next request.</p>
+<p><strong>Example: Save JWT Token</strong></p>
+<ol>
+<li class=""><strong>Login Request</strong> (POST <code>/api/token/</code>)</li>
+</ol>
+<p>In <strong>Tests</strong> tab:</p>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Parse response</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> response </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> pm</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">response</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">json</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// Save token to environment variable</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pm</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">environment</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;access_token&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> response</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">access</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pm</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">environment</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;refresh_token&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> response</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">refresh</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
+<ol>
+<li class=""><strong>Use Token in Next Request</strong></li>
+</ol>
+<p>In <strong>Authorization</strong> tab:</p>
+<ul>
+<li class="">Type: <strong>Bearer Token</strong></li>
+<li class="">Token: <code>{{access_token}}</code></li>
+</ul>
+<p>Or in <strong>Headers</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Authorization: Bearer {{access_token}}</span><br></span></code></pre></div></div>
+<p><strong>Common Use Cases:</strong></p>
+<ul>
+<li class="">Save authentication tokens</li>
+<li class="">Extract IDs from created resources</li>
+<li class="">Store pagination tokens</li>
+<li class="">Capture session data</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="environment-best-practices">Environment Best Practices<a href="#environment-best-practices" class="hash-link" aria-label="Direct link to Environment Best Practices" title="Direct link to Environment Best Practices" translate="no">​</a></h3>
+<p><strong>1. Use Descriptive Names</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">✅ Good: base_url, api_key, user_id</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">❌ Bad: url, key, id</span><br></span></code></pre></div></div>
+<p><strong>2. Separate Environments</strong></p>
+<ul>
+<li class="">Don&#x27;t mix dev and prod values</li>
+<li class="">Create separate environments for each</li>
+</ul>
+<p><strong>3. Use Initial Values</strong></p>
+<ul>
+<li class="">Set default/example values</li>
+<li class="">Team members can override with Current Value</li>
+</ul>
+<p><strong>4. Secure Sensitive Data</strong></p>
+<ul>
+<li class="">Don&#x27;t commit environment files with real API keys</li>
+<li class="">Use Postman&#x27;s built-in secret management</li>
+<li class="">Rotate keys regularly</li>
+</ul>
+<p><strong>5. Document Variables</strong></p>
+<ul>
+<li class="">Add descriptions in environment</li>
+<li class="">Document what each variable is for</li>
+<li class="">Note any special requirements</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="next-steps">Next Steps<a href="#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps" translate="no">​</a></h2>
+<p>Congratulations! You&#x27;ve completed Part 1 of the Postman guide. You now know how to:</p>
+<ul>
+<li class="">✅ Install Postman on Windows and Linux</li>
+<li class="">✅ Navigate the Postman interface</li>
+<li class="">✅ Send basic HTTP requests (GET, POST, PUT, PATCH, DELETE)</li>
+<li class="">✅ Work with headers and request bodies</li>
+<li class="">✅ Organize requests into collections</li>
+<li class="">✅ Use environments and variables</li>
+</ul>
+<p><strong>Continue to Part 2</strong> to learn:</p>
+<ul>
+<li class="">Authentication (JWT, Token, OAuth)</li>
+<li class="">Writing tests and scripts</li>
+<li class="">Automation and collection runner</li>
+<li class="">Mock servers and documentation</li>
+<li class="">Advanced Flask API testing examples</li>
+<li class="">Troubleshooting common issues</li>
+</ul>
+<p><strong>Practice Exercises:</strong></p>
+<ol>
+<li class="">Create a collection for your Flask API</li>
+<li class="">Set up Development and Production environments</li>
+<li class="">Create requests for all CRUD operations</li>
+<li class="">Use variables for base URL and authentication</li>
+<li class="">Organize requests into logical folders</li>
+</ol>
+<p><strong>Ready for more?</strong> Continue to <a class="" href="/backend-tools-handbook/POSTMAN_GUIDE_PART2_ADVANCED">Postman Guide - Part 2: Advanced Features</a></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/pragnakalp/backend-tools-handbook/tree/main/docs/POSTMAN_GUIDE_PART1_BASICS.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/backend-tools-handbook/CURL_GUIDE"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Guide</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/backend-tools-handbook/POSTMAN_GUIDE_PART2_ADVANCED"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Advanced</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#goal" class="table-of-contents__link toc-highlight">Goal</a></li><li><a href="#table-of-contents" class="table-of-contents__link toc-highlight">Table of Contents</a></li><li><a href="#what-is-postman" class="table-of-contents__link toc-highlight">What is Postman?</a></li><li><a href="#installation-and-setup" class="table-of-contents__link toc-highlight">Installation and Setup</a><ul><li><a href="#windows-installation" class="table-of-contents__link toc-highlight">Windows Installation</a></li><li><a href="#linux-installation" class="table-of-contents__link toc-highlight">Linux Installation</a></li><li><a href="#creating-a-postman-account" class="table-of-contents__link toc-highlight">Creating a Postman Account</a></li><li><a href="#initial-setup-and-preferences" class="table-of-contents__link toc-highlight">Initial Setup and Preferences</a></li></ul></li><li><a href="#understanding-the-postman-interface" class="table-of-contents__link toc-highlight">Understanding the Postman Interface</a><ul><li><a href="#main-components" class="table-of-contents__link toc-highlight">Main Components</a></li><li><a href="#sidebar-components" class="table-of-contents__link toc-highlight">Sidebar Components</a></li><li><a href="#request-builder" class="table-of-contents__link toc-highlight">Request Builder</a></li><li><a href="#response-viewer" class="table-of-contents__link toc-highlight">Response Viewer</a></li><li><a href="#console" class="table-of-contents__link toc-highlight">Console</a></li></ul></li><li><a href="#sending-your-first-request" class="table-of-contents__link toc-highlight">Sending Your First Request</a><ul><li><a href="#step-by-step-your-first-get-request" class="table-of-contents__link toc-highlight">Step-by-Step: Your First GET Request</a></li><li><a href="#testing-your-local-flask-api" class="table-of-contents__link toc-highlight">Testing Your Local Flask API</a></li></ul></li><li><a href="#http-methods-explained" class="table-of-contents__link toc-highlight">HTTP Methods Explained</a><ul><li><a href="#get---retrieve-data" class="table-of-contents__link toc-highlight">GET - Retrieve Data</a></li><li><a href="#post---create-new-resource" class="table-of-contents__link toc-highlight">POST - Create New Resource</a></li><li><a href="#put---full-update" class="table-of-contents__link toc-highlight">PUT - Full Update</a></li><li><a href="#patch---partial-update" class="table-of-contents__link toc-highlight">PATCH - Partial Update</a></li><li><a href="#delete---remove-resource" class="table-of-contents__link toc-highlight">DELETE - Remove Resource</a></li><li><a href="#summary-table" class="table-of-contents__link toc-highlight">Summary Table</a></li></ul></li><li><a href="#working-with-request-headers" class="table-of-contents__link toc-highlight">Working with Request Headers</a><ul><li><a href="#what-are-headers" class="table-of-contents__link toc-highlight">What are Headers?</a></li><li><a href="#adding-headers-in-postman" class="table-of-contents__link toc-highlight">Adding Headers in Postman</a></li><li><a href="#common-headers-for-apis" class="table-of-contents__link toc-highlight">Common Headers for APIs</a></li><li><a href="#preset-headers" class="table-of-contents__link toc-highlight">Preset Headers</a></li><li><a href="#managing-headers" class="table-of-contents__link toc-highlight">Managing Headers</a></li></ul></li><li><a href="#request-body-and-data-types" class="table-of-contents__link toc-highlight">Request Body and Data Types</a><ul><li><a href="#when-to-use-request-body" class="table-of-contents__link toc-highlight">When to Use Request Body</a></li><li><a href="#body-types-in-postman" class="table-of-contents__link toc-highlight">Body Types in Postman</a></li><li><a href="#json-body-most-common" class="table-of-contents__link toc-highlight">JSON Body (Most Common)</a></li><li><a href="#form-data" class="table-of-contents__link toc-highlight">Form Data</a></li><li><a href="#url-encoded-form" class="table-of-contents__link toc-highlight">URL-Encoded Form</a></li><li><a href="#binary-body" class="table-of-contents__link toc-highlight">Binary Body</a></li><li><a href="#json-formatting-tips" class="table-of-contents__link toc-highlight">JSON Formatting Tips</a></li></ul></li><li><a href="#organizing-requests-with-collections" class="table-of-contents__link toc-highlight">Organizing Requests with Collections</a><ul><li><a href="#what-are-collections" class="table-of-contents__link toc-highlight">What are Collections?</a></li><li><a href="#creating-a-collection" class="table-of-contents__link toc-highlight">Creating a Collection</a></li><li><a href="#adding-requests-to-collection" class="table-of-contents__link toc-highlight">Adding Requests to Collection</a></li><li><a href="#organizing-with-folders" class="table-of-contents__link toc-highlight">Organizing with Folders</a></li><li><a href="#collection-settings" class="table-of-contents__link toc-highlight">Collection Settings</a></li><li><a href="#collection-variables" class="table-of-contents__link toc-highlight">Collection Variables</a></li><li><a href="#running-collections" class="table-of-contents__link toc-highlight">Running Collections</a></li><li><a href="#sharing-collections" class="table-of-contents__link toc-highlight">Sharing Collections</a></li></ul></li><li><a href="#using-environments-and-variables" class="table-of-contents__link toc-highlight">Using Environments and Variables</a><ul><li><a href="#what-are-environments" class="table-of-contents__link toc-highlight">What are Environments?</a></li><li><a href="#creating-an-environment" class="table-of-contents__link toc-highlight">Creating an Environment</a></li><li><a href="#switching-environments" class="table-of-contents__link toc-highlight">Switching Environments</a></li><li><a href="#using-variables-in-requests" class="table-of-contents__link toc-highlight">Using Variables in Requests</a></li><li><a href="#variable-scopes" class="table-of-contents__link toc-highlight">Variable Scopes</a></li><li><a href="#dynamic-variables" class="table-of-contents__link toc-highlight">Dynamic Variables</a></li><li><a href="#setting-variables-from-response" class="table-of-contents__link toc-highlight">Setting Variables from Response</a></li><li><a href="#environment-best-practices" class="table-of-contents__link toc-highlight">Environment Best Practices</a></li></ul></li><li><a href="#next-steps" class="table-of-contents__link toc-highlight">Next Steps</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">
+            <style>
+              .footer-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2rem;
+                font-size: 1.1rem;
+                gap: 1rem;
+                line-height: 1.6;
+              }
+              
+              @media (max-width: 768px) {
+                .footer-container {
+                  flex-direction: column;
+                  text-align: center;
+                  justify-content: center;
+                  font-size: 1rem;
+                }
+              }
+            </style>
+            
+            <div class="footer-container">
+              
+              <div>
+                Copyright © 2026
+                <a href="https://pragnakalp.com" target="_blank" rel="noopener noreferrer" style="color: #0ea5e9; text-decoration: none; font-weight: 500; margin-left: 0.25rem;">
+                  Pragnakalp Techlabs
+                </a>. All rights reserved.
+              </div>
+
+              <div>
+                <strong>Contributors:</strong> Rahul, Nikunj, Neel, Meet, Dhvanil, Mansi, Darshit
+              </div>
+
+            </div>
+          </div></div></div></footer></div>
+</body>
+</html>
